@@ -25,8 +25,8 @@ const FormsPage = () => {
   // Fetch APOD data for the background
   useEffect(() => {
     const fetchAPOD = async (date) => {
-      const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=fbNyjiNhuC5opvRyd9VvrAHzF9aSHrOouOfXEczs${date ? `&date=${date.format('YYYY-MM-DD')}` : ''}`);
-    // const response = await fetch(` http://localhost:3030/api/nasa/apod${date ? `&date=${date.format('YYYY-MM-DD')}` : ''}`);
+      // const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=fbNyjiNhuC5opvRyd9VvrAHzF9aSHrOouOfXEczs${date ? `&date=${date.format('YYYY-MM-DD')}` : ''}`);
+      const response = await fetch(` http://localhost:3030/api/nasa/apod?${date ? `&date=${date.format('YYYY-MM-DD')}` : ''}`);
       const data = await response.json();
       setApod(data);
     };
@@ -41,8 +41,8 @@ const FormsPage = () => {
 
   const handleSubmitForm2 = async (e) => {
     e.preventDefault();
-    const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=fbNyjiNhuC5opvRyd9VvrAHzF9aSHrOouOfXEczs&count=${count}`;
-    // const apiUrl = `http://localhost:3030/api/nasa/apod&count=${count}`;
+    // const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=fbNyjiNhuC5opvRyd9VvrAHzF9aSHrOouOfXEczs&count=${count}`;
+    const apiUrl = `http://localhost:3030/api/nasa/apod?count=${count}`;
 
     try {
       const response = await axios.get(apiUrl);
@@ -65,7 +65,8 @@ const FormsPage = () => {
   
       const startDateFormat = startDate.format('YYYY-MM-DD');
       const endDateFormat = endDate.format('YYYY-MM-DD');
-      const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=fbNyjiNhuC5opvRyd9VvrAHzF9aSHrOouOfXEczs&start_date=${startDateFormat}&end_date=${endDateFormat}`;
+      // const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=fbNyjiNhuC5opvRyd9VvrAHzF9aSHrOouOfXEczs&start_date=${startDateFormat}&end_date=${endDateFormat}`;
+      const apiUrl = `http://localhost:3030/api/nasa/apod?start_date=${startDateFormat}&end_date=${endDateFormat}`;
   
       try {
         const response = await axios.get(apiUrl);
